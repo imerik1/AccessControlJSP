@@ -1,0 +1,71 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<style>
+    * {
+        font-family: Roboto, 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-sizing: border-box;
+    }
+    *:active, *:focus {
+        outline: none;
+    }
+    .container {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 600px;
+        gap: 1rem;
+        flex: 1;
+    }
+    body {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        height: 100vh;
+        min-height: 100vh;
+        width: 100vw;
+        max-width: 100vw;
+    }
+    nav.header {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        padding: 1rem calc(100vw / 10);
+        box-shadow: 0px 0px 10px -7.2px #000000;
+    }
+    ul.header__list {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 1rem;
+        list-style-type: none;
+    }
+</style>
+<%
+    String nameHeader = String.valueOf(session.getAttribute("name"));
+    String passwordHeader = String.valueOf(session.getAttribute("password"));
+    Boolean sessionHeader = nameHeader != null && passwordHeader != null;
+%>
+<nav class='header'>
+    <h1 class='header__title'>ERIKSANTANAAPP</h1>
+    <ul class='header__list'>
+        <li>
+            <a href="index.jsp">Página Inicial</a>
+        </li>
+        <li>
+            <a href="about.jsp">Sobre</a>
+        </li>
+        <%if (sessionHeader) {%>
+        <li>
+            <a href="index.jsp?logout=true">Sair</a>
+        </li>
+        <%}%>
+    </ul>
+</nav>
